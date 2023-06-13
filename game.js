@@ -1,15 +1,15 @@
 
-var wins = 0,
-    losses = 0,
-    ties = 0
-    choices = ["ROCK", "PAPER", "SCISSORS"]
-
-// human chooses R, P, S
+var wins = 0
+var losses = 0
+var ties = 0
+var choices = ["ROCK", "PAPER", "SCISSORS"]
 var keepPlaying = true
+
+
 
 while (keepPlaying) {
 
-    // human chooice 
+    // human chooice Rock
     var humanChoice = prompt("Choose Rock, Paper, Scissors")
     if (humanChoice) {
         humanChoice = humanChoice.toUpperCase()
@@ -17,14 +17,12 @@ while (keepPlaying) {
 
     if (!choices.includes(humanChoice)) {
         alert("Nice try! Guns and Bombs cannot be used. Try again!")
+        continue
     }
-   
 
     // Computer choice
     var randomNum = Math.floor(Math.random() * 3)
     var computerChoice = choices[randomNum]
-
-
 
     if (
         humanChoice === "SCISSORS" && computerChoice === "PAPER" ||
@@ -33,19 +31,15 @@ while (keepPlaying) {
     ) {
         alert("You WON!")
         wins++
-    }
-    else if (humanChoice === computerChoice) {
+    } else if (humanChoice === computerChoice) {
         alert("This round has been tied")
         ties++
-    }
-
-    else {
+    } else {
         alert("You are a loser! Try again")
         losses++
     }
 
     alert("WINS: " + wins + "\nTies: " + ties + "\nLosses: " + losses)
-
     keepPlaying = confirm("Would you like to play agian?")
 
 }
