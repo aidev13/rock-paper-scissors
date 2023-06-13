@@ -1,35 +1,53 @@
-console.log("Hello RPS!")
-
 
 var wins = 0,
     losses = 0,
     ties = 0
-    choices = ["rock", "Paper", "Scissors"]
+    choices = ["ROCK", "PAPER", "SCISSORS"]
 
 // human chooses R, P, S
-// var humanChoice = prompt("Choose Rock, Paper, Scissors")
-// console.log(humanChoice)
-    //get choice from users input
-    // computer randomly chooses
-var randomNum = Math.floor( Math.random() * 3)
-console.log(randomNum)
+var keepPlaying = true
 
-// computer choices
-    // if humanChoice is S and pcChoice is P OR
-    // if humanChoice is R and pdChoice is S OR
-    // if humanChoice is P and pcChoice is R
-        // wins
-        // alert that human wins
-        // increase wins
-    // if humanChoice === psChoice
-        // ties
-        // alert human tie
-        //increase tie
-    //else
-        // alert human had lost
-        // increase lossses
+while (keepPlaying) {
 
-    // ask user "do you want to play again?""
-        // if yes, restart game
-        // if no, end game - close application.
+    // human chooice 
+    var humanChoice = prompt("Choose Rock, Paper, Scissors")
+    if (humanChoice) {
+        humanChoice = humanChoice.toUpperCase()
+    }
 
+    if (!choices.includes(humanChoice)) {
+        alert("Nice try! Guns and Bombs cannot be used. Try again!")
+    }
+   
+
+    // Computer choice
+    var randomNum = Math.floor(Math.random() * 3)
+    var computerChoice = choices[randomNum]
+
+
+
+    if (
+        humanChoice === "SCISSORS" && computerChoice === "PAPER" ||
+        humanChoice === "PAPER" && computerChoice === "ROCK" ||
+        humanChoice === "ROCK" && computerChoice === "SCISSORS"
+    ) {
+        alert("You WON!")
+        wins++
+    }
+    else if (humanChoice === computerChoice) {
+        alert("This round has been tied")
+        ties++
+    }
+
+    else {
+        alert("You are a loser! Try again")
+        losses++
+    }
+
+    alert("WINS: " + wins + "\nTies: " + ties + "\nLosses: " + losses)
+
+    keepPlaying = confirm("Would you like to play agian?")
+
+}
+
+alert("Play Again Soon!")
